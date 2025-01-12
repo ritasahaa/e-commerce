@@ -61,7 +61,7 @@ const CardsDetail = () => {
           {
             data.map((ele) => {
               return (
-                <>
+                <div className="col-8 col-md-10 d-flex flex-wrap gap-2">
                   <div className="items_img">
                     <img src={ele.imgdata} alt={ele.rname} />
                   </div>
@@ -93,7 +93,7 @@ const CardsDetail = () => {
                       </tbody>
                     </Table>
                   </div>
-                </>
+                </div>
               )
             })
           }
