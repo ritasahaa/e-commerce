@@ -19,6 +19,7 @@ const CardsDetail = () => {
   const getdata = useSelector((state) => state.cartreducer.carts)
   // console.log(getdata);
 
+
   const compare = () => {
     let comparedata = getdata.filter((e) => {
       return e.id == id;
@@ -50,6 +51,10 @@ const CardsDetail = () => {
   }, [id])
 
 
+  const navigate = useNavigate();
+  const Home = () => {
+    navigate("/cart/buy"); // Navigates to the Home page
+  };
 
   return (
     <div className="container mt-2">
@@ -77,10 +82,11 @@ const CardsDetail = () => {
                             <p> <strong>Dishes</strong> : {ele.address} </p>
                             <p> <strong>Total</strong> : ₹ {ele.price * ele.qnty} </p>
 
-                            <div className="mt-5 d-flex justify-content-between align-items-center" style={{width:100,padding:"2px 12px", cursor:"pointer",background:"#ddd",color:"#111"}}>
+                            <div className="mt-5 d-flex justify-content-between align-items-center" style={{width:100,padding:"8px 12px", cursor:"pointer",background:"#ddd",color:"#111"}}>
                               <span style={{fontSize:24}} onClick={ele.qnty <=1 ? ()=>dlt(ele.id) : ()=>remove(ele)}> - </span> 
                               <span style={{fontSize:20 }}> {ele.qnty} </span>
                               <span style={{fontSize:24}} onClick={()=>send(ele)}> + </span>
+
                             </div>
                           </td>
 
@@ -88,7 +94,14 @@ const CardsDetail = () => {
                             <p> <strong>Rating :</strong> <span style={{ background: "green", color: "#fff", padding: "2px 5px", borderRadius: "5px" }}>{ele.rating}★ </span> </p>
                             <p> <strong>Order Review :</strong> <span>{ele.somedata} </span> </p>
                             <p> <strong>Remove :</strong> <span> <i className="fas fa-trash" onClick={() => dlt(ele.id)} style={{ color: "red", fontSize: 20, cursor: "pointer" }}></i> </span> </p>
+
+                            <br/><br/><br/><br/>
+                            
+                            <span 
+                            style={{fontSize:20,backgroundColor:"red",color: "#fff",padding:"8px 30px",display: "inline-block", marginTop: 2,cursor: "pointer"}} onClick={()=>Home()}> Buy Now 
+                            </span>
                           </td>
+
                         </tr>
                       </tbody>
                     </Table>
